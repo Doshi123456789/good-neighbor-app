@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Good Neighbor — verified teens for your small jobs</title>
+<meta name="description" content="Good Neighbor matches verified teens with neighbors who need small jobs done. Pre-launch — list a job or join the waitlist.">
+<meta property="og:title" content="Good Neighbor">
+<meta property="og:description" content="Verified teens for your small jobs. Built by a teen. Launching soon.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="style.css">
+<style>
+  .paths{display:grid; gap:1rem; margin:0 0 2.5rem}
+  .path{
+    display:block; padding:1.25rem 1.35rem; background:var(--card);
+    border:1.5px solid var(--line); border-radius:.9rem; text-decoration:none; color:inherit;
+  }
+  .path:hover{border-color:var(--green)}
+  .path b{display:block; font-size:1.0625rem; font-weight:800; margin-bottom:.2rem}
+  .path span{font-size:.9375rem; color:var(--ink-soft)}
+  .path .go{color:var(--green); font-weight:700}
+  .rates{margin:0 0 2.5rem; font-size:.9375rem; color:var(--ink-soft)}
+  .rates div{display:flex; justify-content:space-between; padding:.4rem 0; border-bottom:1px solid var(--line)}
+  .rates b{color:var(--green); font-weight:800}
+  h2{font-size:.8125rem; text-transform:uppercase; letter-spacing:.09em; color:var(--ink-soft); margin:0 0 .6rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="mark" href="./">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.6V20h14V9.6"/><path d="M9.5 20v-5h5v5"/>
+    </svg>
+    Good Neighbor
+  </a>
+
+  <h1 style="margin-top:2rem">Verified teens for your <span class="accent">small jobs</span>.</h1>
+  <p class="sub">
+    Dog walks, yard work, moving help, grocery runs. ID and parent-verified, every time.
+    Built by a teen — launching neighborhood by neighborhood.
+  </p>
+
+  <div class="paths">
+    <a class="path" href="post-a-job.html">
+      <b>I've got a job that needs doing</b>
+      <span>Tell us what you need and roughly what you'd pay. <span class="go">List a job →</span></span>
+    </a>
+    <a class="path" href="#teens">
+      <b>I'm a teen who wants the work</b>
+      <span>Get told the moment we open in your neighborhood. <span class="go">Join the waitlist →</span></span>
+    </a>
+  </div>
+
+  <h2>What neighbors usually pay</h2>
+  <div class="rates">
+    <div><span>Dog walk</span><b>$15–20</b></div>
+    <div><span>Yard work</span><b>$25–40</b></div>
+    <div><span>Moving help</span><b>$20/hr</b></div>
+    <div><span>Tech setup for seniors</span><b>$20–30</b></div>
+    <div><span>Grocery run</span><b>$15 + tip</b></div>
+  </div>
+
+  <h2 id="teens">Teen waitlist</h2>
+  <form id="waitlist">
+    <div class="field">
+      <label for="email">Your email <span class="hint">— we'll email you once, when it opens near you.</span></label>
+      <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+      <p class="err" id="err-email"></p>
+    </div>
+    <button type="submit">Join the waitlist</button>
+  </form>
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+  <p class="note">Pre-launch. There's no app to download yet — nothing here signs you up for a job.</p>
+
+  <footer><a href="https://instagram.com/the_good_neighbor_app" rel="noopener">@the_good_neighbor_app</a></footer>
+</div>
+
+<script src="app.js"></script>
+<script>
+  GN.wire({
+    formId: "waitlist",
+    statusId: "status",
+    subject: "Good Neighbor teen waitlist",
+    done: "You're on the list. We'll be in touch."
+  });
+</script>
+</body>
+</html>

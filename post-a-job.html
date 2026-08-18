@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>List a job — Good Neighbor</title>
+<meta name="description" content="Tell Good Neighbor what you need done and what you'd pay. Pre-launch — a real person follows up.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<style>
+  .back{display:inline-block; margin-bottom:1.5rem; font-size:.9375rem; color:var(--ink-soft); text-decoration:none}
+  .back:hover{color:var(--green)}
+  .banner{
+    padding:.9rem 1.1rem; margin:0 0 1.75rem; border-radius:.7rem;
+    background:rgba(232,163,61,.14); border-left:3.5px solid var(--amber);
+    font-size:.9375rem; color:var(--ink-soft);
+  }
+  .banner b{color:var(--ink)}
+  /* Step 1 is visually lifted so the page reads as "one easy question", not as
+     a wall of survey -- that is the whole point of the reorder. */
+  .step{
+    display:flex; gap:.75rem; align-items:flex-start;
+    padding:1.15rem 1.2rem; margin-bottom:1.5rem;
+    background:var(--card); border:1.5px solid var(--line); border-radius:.9rem;
+  }
+  .step .field{flex:1; min-width:0}
+  .stepno{
+    flex:none; width:1.6rem; height:1.6rem; border-radius:50%;
+    background:var(--green); color:#fff; font-weight:800; font-size:.875rem;
+    display:inline-flex; align-items:center; justify-content:center; margin-top:.1rem;
+  }
+  .stephead{
+    display:flex; gap:.6rem; align-items:center;
+    font-weight:700; font-size:.9375rem; color:var(--ink-soft); margin:0 0 1.15rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="mark" href="./">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.6V20h14V9.6"/><path d="M9.5 20v-5h5v5"/>
+    </svg>
+    Good Neighbor
+  </a>
+
+  <h1 style="margin-top:2rem">List a <span class="accent">job</span>.</h1>
+  <p class="sub">Tell us what you need done. We'll match it with a verified teen nearby and introduce you directly.</p>
+
+  <!-- Stated plainly and up front: this is honest about where the product
+       actually is, and it stops anyone expecting an instant booking. -->
+  <p class="banner">
+    <b>We're pre-launch</b> — a real person reads every job and follows up by email.
+    Nothing is charged, and no one comes to your door until you've agreed it directly.
+  </p>
+
+  <form id="jobform">
+    <div class="step">
+      <span class="stepno">1</span>
+      <div class="field" style="margin-bottom:0">
+        <label for="email">Where should we reach you?</label>
+        <input type="email" id="email" name="email" required placeholder="you@email.com" autocomplete="email" autofocus>
+        <p class="err" id="err-email"></p>
+      </div>
+    </div>
+
+    <div class="stephead"><span class="stepno">2</span> Now the job itself — takes about a minute.</div>
+
+    <div class="field">
+      <label for="job">What needs doing?</label>
+      <select id="job" name="job" required>
+        <option value="">Pick one…</option>
+        <option>Dog walk / pet care</option>
+        <option>Yard work</option>
+        <option>Moving / lifting help</option>
+        <option>Tech setup for a senior</option>
+        <option>Grocery run</option>
+        <option>Something else</option>
+      </select>
+      <p class="err" id="err-job"></p>
+    </div>
+
+    <div class="field">
+      <label for="details">Tell us a bit more <span class="hint">— how big, how long, anything they should know.</span></label>
+      <textarea id="details" name="details" required placeholder="e.g. Two dogs, 30-minute walk after school, weekdays."></textarea>
+      <p class="err" id="err-details"></p>
+    </div>
+
+    <div class="field">
+      <!-- Neighbourhood or ZIP only. A full street address is deliberately NOT
+           collected here: it is not needed to match a job, and it should be
+           exchanged person-to-person after both sides have agreed. -->
+      <label for="area">Neighborhood or ZIP <span class="hint">— street address comes later, once you've picked someone.</span></label>
+      <input type="text" id="area" name="area" required placeholder="e.g. Astoria, 11106" autocomplete="postal-code">
+      <p class="err" id="err-area"></p>
+    </div>
+
+    <div class="field">
+      <label for="timing">When?</label>
+      <input type="text" id="timing" name="timing" required placeholder="e.g. Weekday afternoons, or Sat morning">
+      <p class="err" id="err-timing"></p>
+    </div>
+
+    <div class="field">
+      <label for="pay">What you'd pay <span class="hint">— rough is fine. Most jobs run $15–40.</span></label>
+      <input type="text" id="pay" name="pay" required placeholder="e.g. $20">
+      <p class="err" id="err-pay"></p>
+    </div>
+
+    <div class="field">
+      <label for="name">Your name</label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+      <p class="err" id="err-name"></p>
+    </div>
+
+    <div class="check">
+      <input type="checkbox" id="adult" name="adult" required>
+      <label for="adult">I'm 18 or over, and I understand a teen doing this job will have a parent or guardian confirmed before they start.</label>
+    </div>
+    <p class="err" id="err-adult" style="margin-top:-1rem"></p>
+
+    <button type="submit">Send this job</button>
+  </form>
+
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+  <p class="note">We only use your details to match this job and follow up. Nothing is shared publicly and there's no job board.</p>
+
+  <footer><a href="https://instagram.com/the_good_neighbor_app" rel="noopener">@the_good_neighbor_app</a></footer>
+</div>
+
+<script src="app.js"></script>
+<script>
+  GN.wire({
+    formId: "jobform",
+    statusId: "status",
+    earlyCapture: "email",
+    subject: "Good Neighbor — new job listing",
+    done: "Got it. We'll email you once we've found someone nearby."
+  });
+</script>
+</body>
+</html>

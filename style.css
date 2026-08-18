@@ -1,0 +1,60 @@
+/* Shared across index.html and post-a-job.html. Extracted when the site went
+   from one page to two -- the palette and form controls were about to be
+   duplicated verbatim. */
+:root{
+  --ink:#1C2B22; --ink-soft:#4A5D51; --cream:#F7F3EA; --card:#FFFFFF;
+  --green:#2F6B4F; --green-dark:#245540; --amber:#E8A33D;
+  --line:#DED6C6; --err:#B4472F;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:ui-rounded,"SF Pro Rounded","Segoe UI",Nunito,system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.5;
+}
+.wrap{width:100%; max-width:min(34rem,100%); margin:0 auto; padding:2rem 1.5rem 3rem}
+
+.mark{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-weight:800; letter-spacing:-.01em; color:var(--green); font-size:1.0625rem;
+  text-decoration:none;
+}
+.mark svg{width:1.5rem;height:1.5rem;flex:none}
+
+h1{font-size:clamp(1.85rem,7.5vw,3rem); line-height:1.08; letter-spacing:-.03em; font-weight:800; margin:0 0 1rem}
+h1 .accent{color:var(--green)}
+.sub{font-size:clamp(1rem,2.6vw,1.125rem); color:var(--ink-soft); margin:0 0 2rem; max-width:min(28rem,100%)}
+
+label{display:block; font-weight:700; font-size:.9375rem; margin:0 0 .35rem}
+.hint{font-weight:400; color:var(--ink-soft); font-size:.875rem}
+.field{margin-bottom:1.15rem}
+input,select,textarea{
+  width:100%; padding:.85rem 1rem; font:inherit; font-size:1rem; color:var(--ink);
+  background:var(--card); border:1.5px solid var(--line); border-radius:.7rem;
+}
+textarea{min-height:5.5rem; resize:vertical}
+input:focus,select:focus,textarea:focus{
+  outline:none; border-color:var(--green); box-shadow:0 0 0 3px rgba(47,107,79,.15);
+}
+input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--err)}
+.err{color:var(--err); font-size:.875rem; font-weight:600; margin-top:.3rem; min-height:1.1em}
+
+.check{display:flex; gap:.65rem; align-items:flex-start; margin-bottom:1.4rem}
+.check input{width:auto; flex:none; margin-top:.2rem; accent-color:var(--green)}
+.check label{font-weight:400; font-size:.9375rem; color:var(--ink-soft)}
+
+button{
+  width:100%; padding:1rem 1.5rem; font:inherit; font-size:1.0625rem; font-weight:700;
+  color:#fff; background:var(--green); border:0; border-radius:.7rem; cursor:pointer;
+}
+button:hover{background:var(--green-dark)}
+.status{margin-top:1rem; font-size:.9375rem; font-weight:600; color:var(--green); min-height:1.2em}
+.note{margin-top:1rem; font-size:.875rem; color:var(--ink-soft)}
+footer{margin-top:2.5rem; font-size:.875rem}
+footer a{color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--green); border-color:var(--green)}
+
+@media (prefers-color-scheme:dark){
+  :root{--ink:#EDE7DA; --ink-soft:#A9B5AC; --cream:#141B17; --card:#1D2620; --line:#2E3A32}
+}
